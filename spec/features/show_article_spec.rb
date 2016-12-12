@@ -2,7 +2,10 @@ require "rails_helper"
 
 feature "show article" do
   before do
-    @article = Article.create(title: "A article title", body: "A cool article body")
+    john = User.create(email: "john@example.com", password: "password")
+    login_as(john)
+
+    @article = Article.create(title: "A article title", body: "A cool article body", user: john)
   end
 
   scenario "A user shows an article" do
