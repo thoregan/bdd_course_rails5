@@ -2,9 +2,10 @@ require "rails_helper"
 
 feature "Listing Articles" do
   before do
-    @article1 = Article.create(title: "The first article", body: "Lorem ipsum 1")
+    john = User.create(email: "john@example.com", password: "password")
 
-    @article2 = Article.create(title: "The second article", body: "Lorem ipsum 2")
+    @article1 = Article.create(title: "The first article", body: "Lorem ipsum 1", user: john)
+    @article2 = Article.create(title: "The second article", body: "Lorem ipsum 2", user: john)
   end
 
   scenario "A user lists all articles" do
